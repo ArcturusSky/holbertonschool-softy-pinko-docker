@@ -633,14 +633,14 @@
     <!-- Global Init -->
     <script src="assets/js/custom.js"></script>
 
-    <!-- Javascript request to get the dynamic data from the backend -->
+    <!-- Javascript request to get the dynamic data from the servers that will sent it to the back -->
     <script>
         // Load dynamic data from the back-end on port 5252
         $(function() {
             $.ajax({
                 type: "GET",
-                url: "http://localhost:5252/api/hello",
-                success: function(data) {
+                url: "/api/hello",
+                success: function (data) {
                     console.log(data);
                     $('#dynamic-content').text(data);
                 }
