@@ -1,0 +1,14 @@
+# Base my image on the latest ubuntu version
+FROM ubuntu:latest
+
+# Need to be sure everything is up to date
+# So RUN the command "apt-get" update as if I was in
+# my terminal
+RUN apt-get update
+
+# Same idea, needs to upgrade what is on my image
+RUN apt-get upgrade -y
+
+# Simple command to display "Hello, World!"
+# CMD is means executing command...
+CMD echo "Hello, World!"
