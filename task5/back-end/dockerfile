@@ -1,0 +1,31 @@
+# Base my image on the latest ubuntu version
+FROM ubuntu:latest
+
+# Need to be sure everything is up to date
+# So RUN the command "apt-get" update as if I was in
+# my terminal
+RUN apt-get update
+
+# Same idea, needs to upgrade what is on my image
+RUN apt-get upgrade -y
+
+
+# Installing Python, pip3 and Flask
+RUN apt-get install -y python3 python3-pip
+
+# Somehow, this fix the issue:
+#  "ERROR: failed to solve: process "/bin/sh -c pip3 install flask" did not complete successfully: exit code: 1"
+RUN rm /usr/lib/python*/EXTERNALLY-MANAGED
+
+RUN pip3 install flask flask-cors
+
+# Create a working app directory INSIDE the docker
+WORKDIR /app
+
+# Copy the file "api.py" file into the docker
+COPY ./api.py /app/api.py
+
+# "CMD" defines the default command to run when the Docker container starts.
+# Here, using JSON syntax: "CMD ['executable', 'param1', 'param2']"
+# So, when Docker launches the container, it will run: "python3 api.py"
+CMD ["python3", "api.py"]
