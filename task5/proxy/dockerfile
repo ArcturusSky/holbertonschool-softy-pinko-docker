@@ -4,3 +4,8 @@ FROM nginx:latest
 # Copy the Nginx configuration file into the configuration directory
 # This ensures Nginx is set up to serve the  app on port 9000
 COPY ./proxy.conf /etc/nginx/conf.d/default.conf
+
+# Documentation about the fact that
+# the app is listening on the port 900 but ONLY IN INTERN
+
+EXPOSE 9000
