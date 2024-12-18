@@ -1,0 +1,29 @@
+version: '3.9'  # Specifies the version of Docker Compose to use. '3.9' is compatible with recent Docker versions.
+
+services:  # Defines all the services (containers) that this application requires.
+  
+  back-end:  # Logical name for the service
+    image: my_back-end  # Name of the Docker image to use.
+    
+    build: ./back-end  # Builds the Docker image from the Dockerfile located in the 'back-end' directory.
+    
+    ports:  
+      - "5252:5252"  # This makes the back-end accessible via localhost:5252.
+    
+    volumes:
+      - ./back-end:/app  # Mounts the local 'back-end' directory into the container at the '/app' path.
+                         # Changes in the local directory will reflect inside the container.
+    
+    environment:
+      - FLASK_ENV=development  # Sets the environment variable 'FLASK_ENV' to 'development'.
+                               # Useful for enabling debug mode in Flask or setting up a development environment.
+
+# Now same for the front
+
+  front-end:  
+    image: my_frontend_app
+    build: ./front-end/
+    ports:  
+      - "9000:9000"
+    depends_on: # Select a service to run before and from what this service will depends on
+      - back-end
