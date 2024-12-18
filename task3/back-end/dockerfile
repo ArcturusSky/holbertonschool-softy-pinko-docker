@@ -17,7 +17,7 @@ RUN apt-get install -y python3 python3-pip
 #  "ERROR: failed to solve: process "/bin/sh -c pip3 install flask" did not complete successfully: exit code: 1"
 RUN rm /usr/lib/python*/EXTERNALLY-MANAGED
 
-RUN pip3 install flask
+RUN pip3 install flask flask-cors
 
 # Create a working app directory INSIDE the docker
 WORKDIR /app
