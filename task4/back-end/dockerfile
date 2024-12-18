@@ -25,12 +25,6 @@ WORKDIR /app
 # Copy the file "api.py" file into the docker
 COPY ./api.py /app/api.py
 
-# Display the instructions in the build output
-RUN echo "!!INSTRUCTIONS!!"
-RUN echo "To test, run: docker run -d -p 5252:5252 my_back-end"
-RUN echo "then go on your navigator and go to:"
-RUN echo "http://localhost:5252/api/hello"
-
 # "CMD" defines the default command to run when the Docker container starts.
 # Here, using JSON syntax: "CMD ['executable', 'param1', 'param2']"
 # So, when Docker launches the container, it will run: "python3 api.py"
