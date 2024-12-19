@@ -11,4 +11,4 @@ RUN apt-get upgrade -y
 
 # Simple command to display "Hello, World!"
 # CMD is means executing command...
-CMD echo "Hello, World!"
+CMD ["echo", "Hello, World!"]
